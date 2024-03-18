@@ -19,7 +19,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip --default-timeout=1000 install --no-cache-dir -r requirements.txt
 
-COPY ./app/ /root/app/
+COPY ./app/ /usr/src/app
 
 # アプリケーションがリッスンするポートを指定
 EXPOSE 8000
