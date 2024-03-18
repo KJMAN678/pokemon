@@ -19,8 +19,12 @@ docker compose build --no-cache
 # コンテナの起動
 docker compose up -d
 
+docker compose restart
+
 # コンテナ名 (pokemon-pokemon-showdown-1) の確認
 docker-compose ps
+
+docker container exec -it pokemon-pokemon-showdown-1 bash
 
 # VSCode で開発コンテナ(pokemon-pokemon-showdown-1)に入る
 
