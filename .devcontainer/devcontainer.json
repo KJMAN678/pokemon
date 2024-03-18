@@ -1,0 +1,14 @@
+{
+    "name": "pokemon",
+    "dockerComposeFile": "../compose.yml",
+    "service": "pokemon-showdown",
+    "workspaceFolder": "/usr/src/app/",
+    "forwardPorts": [8000],
+    "customizations": {
+      "vscode": {
+        "extensions": [
+            "ms-toolsai.jupyter"
+        ]
+      }
+    }
+  }
