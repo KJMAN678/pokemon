@@ -2,7 +2,7 @@
     "name": "pokemon",
     "dockerComposeFile": "../compose.yml",
     "service": "pokemon-showdown",
-    "workspaceFolder": "/app",
+    "workspaceFolder": "/root/app/",
     "forwardPorts": [8000],
     "customizations": {
       "vscode": {
