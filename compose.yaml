@@ -9,6 +9,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./Users/koji/data/pokemon/app:/app
+      - ${LOCAL_APP_PATH}
     environment:
       - CHOKIDAR_USEPOLLING=true

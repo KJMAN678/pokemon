@@ -1,5 +1,3 @@
-# Python 3.11とNode.js 21を含むイメージをベースに使用
-# FROM nikolaik/python-nodejs:python3.11-nodejs21
 FROM ubuntu:latest
 
 # 必要なツールをインストール

@@ -14,7 +14,7 @@
 
 ```sh
 # ローカル上で pokemon/app の絶対パスを取得し、下記 xxx 部分に貼り付け、コマンドを実行
-export LOCAL_APP_PATH=/Users/koji/data/pokemon/app
+export LOCAL_APP_PATH=xxx
 
 # コンテナの作成(1回目のみ)
 docker compose build --no-cache
