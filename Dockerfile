@@ -25,24 +25,25 @@ RUN apt-get install -y nodejs
 # 本番環境では production
 ENV NODE_ENV=development
 
+# ローカルの app フォルダをコンテナにコピー
+COPY ./app /app
+
 # アプリケーションディレクトリを作成
-WORKDIR /root/app
+WORKDIR /app
 
 # pokemon-showdownリポジトリをクローンし、必要な依存関係をインストール
-RUN git clone --depth 1 https://github.com/smogon/pokemon-showdown.git 
-WORKDIR /root/app/pokemon-showdown
-RUN npm install
-RUN cp config/config-example.js config/config.js
+RUN git clone --depth 1 https://github.com/smogon/pokemon-showdown.git
+RUN cd pokemon-showdown && npm install && cp config/config-example.js config/config.js
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip
-RUN pip --default-timeout=1000 install --no-cache-dir -r requirements.txt
+RUN chown -R root:root /app && chmod -R 777 /app
 
-COPY ./app/ /root/app
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir --upgrade pip
+# RUN pip --default-timeout=1000 install --no-cache-dir -r requirements.txt
 
 ENV CHOKIDAR_USEPOLLING=true
 
 # アプリケーションがリッスンするポートを指定
 EXPOSE 8000
 # アプリケーションを起動するコマンド
-CMD [ "node", "pokemon-showdown", "start", "--no-security" ]
+CMD ["node", "pokemon-showdown/pokemon-showdown", "start", "--no-security"]
