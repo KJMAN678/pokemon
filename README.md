@@ -13,24 +13,14 @@
 ### コマンド
 
 ```sh
+# ローカル上で pokemon/app の絶対パスを取得し、下記 xxx 部分に貼り付け、コマンドを実行
+export LOCAL_APP_PATH=/Users/koji/data/pokemon/app
+
 # コンテナの作成(1回目のみ)
 docker compose build --no-cache
 
 # コンテナの起動
 docker compose up -d
 
-# コンテナ名 (pokemon-pokemon-showdown-1) の確認
-docker-compose ps
-
 # VSCode で開発コンテナ(pokemon-pokemon-showdown-1)に入る
-
-# カーネルの作成
-python3 -m ipykernel install --user --name pokemon
-
-# ポケモンローカルサーバーのURL
-http://localhost:8000/
-
-
-# コンテナから出る
-exit
 ```

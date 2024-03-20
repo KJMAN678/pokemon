@@ -1,9 +1,31 @@
 # Python 3.11とNode.js 21を含むイメージをベースに使用
-FROM nikolaik/python-nodejs:python3.11-nodejs21
+# FROM nikolaik/python-nodejs:python3.11-nodejs21
+FROM ubuntu:latest
 
 # 必要なツールをインストール
-RUN apt-get update && apt-get install -y git curl xdg-utils
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt-get install -y sudo git curl
 RUN apt-get install swig cmake libopenmpi-dev zlib1g-dev xvfb x11-utils ffmpeg -qq -y
+
+# タイムゾーン選択で止まらないようにタイムゾーンを設定
+RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+# Python の関連パッケージをインストール
+RUN apt-get install build-essential libbz2-dev libdb-dev \
+libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
+libncursesw5-dev libsqlite3-dev libssl-dev \
+zlib1g-dev uuid-dev tk-dev -y --fix-missing
+RUN apt-get install python3-pip -y
+
+# Node.js の関連パッケージをインストール
+RUN apt remove --purge nodejs -y
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash -
+RUN apt-get install -y nodejs
+
+# node.js の環境変数を定義する
+# 本番環境では production
+ENV NODE_ENV=development
 
 # アプリケーションディレクトリを作成
 WORKDIR /root/app

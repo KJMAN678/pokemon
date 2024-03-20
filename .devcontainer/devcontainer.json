@@ -4,6 +4,9 @@
     "service": "pokemon-showdown",
     "workspaceFolder": "/root/app/",
     "forwardPorts": [8000],
+    "mounts": [
+      "source=./Users/koji/data/pokemon/app,target=/app,type=bind,consistency=cached"
+    ],
     "customizations": {
       "vscode": {
         "extensions": [
